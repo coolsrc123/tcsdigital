@@ -1,0 +1,94 @@
+#include<stdio.h>
+int count =0;
+m(int a[],int p,int q,int r)
+{
+	count++;
+	
+	int k;
+	int infi=10000;
+	int i,j;
+	int n1,n2;
+	n1=q-p+1;
+	n2=r-q;
+	int l[n1];
+	int R[n2];
+	for(i=0;i<n1;i++)
+	{
+		l[i]=a[p+i];
+	}
+	printf("%d loop ->\n",count);
+	for(i=0;i<n1+1;i++)
+	{
+		printf("%d->",l[i]);
+	}
+	printf("%d\n");
+	
+	
+	for(i=0;i<n2;i++)
+	{
+		R[i]=a[i+1+q];
+	}
+	
+	for(i=0;i<n2+1;i++)
+	{
+		printf("%d->",R[i]);
+	}
+	printf("%d\n");
+	i=0;
+	j=0;
+	k=p;
+	while(i<n1&&j<n2)
+	{
+		if(l[i]<=R[j])
+		{
+			a[k]=l[i];
+			i++;
+			k++;
+		}
+		else{
+			a[k]=R[j];
+			j++;
+			k++;
+		}
+	}
+	while(i<n1)
+	{
+		a[k]=l[i];
+		k++;
+		i++;
+	}
+	while(j<n2)
+	{
+		a[k]=R[j];
+		k++;
+		j++;
+	}
+	
+	
+}
+ms(int a[],int p,int r)
+{
+	
+	if(p<r)
+	{
+		int q = p+(r-p)/2; 
+		ms(a,p,q);
+		ms(a,q+1,r);
+		m(a,p,q,r);
+	}
+}
+p(int a[],int n)
+{
+	int i;
+	for(i=0;i<n;i++)
+	{
+		printf("%d->",a[i]);
+	}
+}
+void main()
+{
+	int a[]={9,6,5,0,8,2};
+	int n=sizeof(a)/sizeof(a[0]);
+	ms(a,0,n-1);
+	p(a,n);
+}
