@@ -1,0 +1,40 @@
+#include<stdio.h>
+void reverse(char *begin,char* end)
+{
+	char temp;
+	while(begin<end)
+	{
+		temp=*begin;
+		*begin=*end;
+		*end=temp;
+		end--;
+		begin++;
+	}
+}
+rswords(char *a)
+{
+	char *temp=a;
+	char *begin=a;
+	while(*temp)
+	{
+		temp++;
+		if(*temp=='\0')
+		{
+			reverse(begin,temp-1);
+		}
+		else if(*temp==' ')
+		{
+			reverse(begin,temp-1);
+			begin=temp+1;
+		}
+	}
+	
+}
+void main()
+{
+	char string[50]="for tcs digital placement";
+	char *a=string;
+	rswords(a);
+	
+	printf("%s",string); //output=rof sct latigid tnemecalp
+}
