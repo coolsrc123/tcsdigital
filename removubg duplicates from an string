@@ -1,0 +1,43 @@
+package tcsdigitaltest;
+import java.util.Arrays;
+
+public class removeduplicate {
+	 
+	static String remove(String str)
+	{
+		int inputindex=1;
+		int resultindex=1;
+		char array[]=str.toCharArray();
+	while(inputindex!=array.length) {
+		if(array[inputindex]!=array[inputindex-1])
+		{
+			array[resultindex]=array[inputindex];
+			resultindex++;
+		}
+		inputindex++;
+	}
+	String ret=new String(array);
+	return ret.substring(0,resultindex);
+	}
+	
+	
+	 
+     static String removedup(String s)
+     {
+    	String str="";
+    	char[] c=s.toCharArray();
+    	
+    	Arrays.sort(c);
+    	String newstring =new String(c);
+    	str=remove(newstring);
+    	return str;
+     }
+	public static void main(String[] args) {
+    	 String orig="";
+		String str="saurabh chaudhary";
+		orig=removedup(str);
+		System.out.println(orig);
+
+	}
+
+}
